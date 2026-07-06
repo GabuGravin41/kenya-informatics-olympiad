@@ -1,0 +1,10 @@
+{
+  "members": [
+    { "name": "TBD", "role": "Director", "org": "KIO Steering Committee", "initials": "KS", "image": "" },
+    { "name": "TBD", "role": "Academic Lead", "org": "Olympiad Problem-Setting Committee", "initials": "PS", "image": "" },
+    { "name": "TBD", "role": "Head Coach", "org": "Selection & Training Camp", "initials": "HC", "image": "" },
+    { "name": "TBD", "role": "Operations", "org": "Logistics, venues, scholarships", "initials": "OP", "image": "" },
+    { "name": "TBD", "role": "Partner Liaison", "org": "KMO · Summer STEM · AOA", "initials": "PL", "image": "" },
+    { "name": "TBD", "role": "Schools Outreach", "org": "Regional coordinators across Kenya", "initials": "SO", "image": "" }
+  ]
+}

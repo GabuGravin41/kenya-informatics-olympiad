@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "date": "08–14 Jul 2026",
+      "tag": "Premier",
+      "title": "Pan-African Informatics Olympiad 2026",
+      "body": "Kenya's national team competes at the continental championship. KIO will be sending 4 contestants, 1 team leader, and 1 deputy.",
+      "primary": true
+    },
+    {
+      "date": "15–25 Jun 2026",
+      "tag": "Camp",
+      "title": "Team Selection Camp",
+      "body": "10-day intensive in Nairobi for the top ~30 contestants from the National Round. Selection tests on days 8, 9, and 10.",
+      "primary": false
+    },
+    {
+      "date": "10 May 2026",
+      "tag": "Round 02",
+      "title": "National Round",
+      "body": "In-person regional sittings in Nairobi, Mombasa, Kisumu, and Eldoret. 5 problems, 5 hours.",
+      "primary": false
+    },
+    {
+      "date": "15 Mar 2026",
+      "tag": "Round 01",
+      "title": "Open Round",
+      "body": "Online qualifier — open to every Kenyan secondary school student. Registration closes 8 March.",
+      "primary": false
+    },
+    {
+      "date": "01 Feb 2026",
+      "tag": "Launch",
+      "title": "Registration opens for Cycle 2026",
+      "body": "First official KIO cycle. Schools may also register groups via their ICT coordinator.",
+      "primary": false
+    }
+  ]
+}

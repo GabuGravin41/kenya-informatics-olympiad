@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "eyebrow": "Support & Donations",
+    "title": "Fuel the pipeline.",
+    "lede": "The Kenya Informatics Olympiad runs on the generosity of partners, institutions, and individuals who believe in Kenyan talent. Every contribution goes directly to training, contests, and getting our team to the world stage."
+  },
+  "appeal": {
+    "heading": "Why your support matters",
+    "paragraphs": [
+      "KIO is a volunteer-run, non-profit initiative. Donations pay for contest infrastructure, training-camp venues and meals, learning materials, and international travel for the national team.",
+      "We welcome one-off gifts, recurring support, in-kind sponsorship (venues, devices, connectivity), and formal institutional partnerships. Reach out and we will tailor a package to your goals."
+    ]
+  },
+  "ways": [
+    {
+      "title": "M-Pesa",
+      "body": "Send a contribution directly via M-Pesa.",
+      "detail": "Paybill 000000 · Account KIO"
+    },
+    {
+      "title": "Bank transfer",
+      "body": "For larger gifts and institutional sponsors.",
+      "detail": "Account details available on request — email partners@kio.ke"
+    },
+    {
+      "title": "In-kind & sponsorship",
+      "body": "Venues, devices, connectivity, prizes, or travel support.",
+      "detail": "Let's design a partnership — partners@kio.ke"
+    }
+  ],
+  "contacts": [
+    {
+      "label": "Donations & sponsorship",
+      "value": "partners@kio.ke",
+      "href": "mailto:partners@kio.ke"
+    },
+    { "label": "General enquiries", "value": "hello@kio.ke", "href": "mailto:hello@kio.ke" }
+  ],
+  "institutions": [
+    { "name": "Kenya Mathematical Olympiad", "logo": "", "url": "", "note": "Programme partner" },
+    { "name": "Summer STEM", "logo": "", "url": "", "note": "Training partner" },
+    { "name": "African Olympiad Academy", "logo": "", "url": "", "note": "Continental partner" },
+    { "name": "Ministry of Education", "logo": "", "url": "", "note": "Government partner" }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "hero": {
+    "eyebrow": "Cycle 2026 // Now Open",
+    "titleLine1": "Kenya",
+    "titleLine2": "Informatics",
+    "titleLine3": "Olympiad",
+    "lede": "Nurturing the next generation of computational thinkers. From logic puzzles to complex algorithms, we identify Kenya's brightest technical minds and prepare them for the world stage.",
+    "primaryCta": "Register 2026",
+    "secondaryCta": "Learn more"
+  },
+  "paioCard": {
+    "eyebrow": "Upcoming Event // 07.2026",
+    "title": "Pan-African Informatics Olympiad",
+    "body": "KIO will represent the nation at PAIO 2026 this July. Intense training camps for shortlisted candidates begin in May.",
+    "cta": "View Event Roadmap →"
+  },
+  "announcements": {
+    "eyebrow": "Announcements",
+    "heading": "Latest updates",
+    "items": [
+      {
+        "date": "01 Feb 2026",
+        "tag": "Registration",
+        "title": "Cycle 2026 registration is open",
+        "body": "The Open Round qualifier runs online in March 2026 and is free for every Kenyan secondary school student.",
+        "link": "/register",
+        "linkLabel": "Register now →"
+      },
+      {
+        "date": "15 Jan 2026",
+        "tag": "Camp",
+        "title": "Team Selection Camp dates confirmed",
+        "body": "The 10-day selection camp for the top ~30 contestants will run 15–25 June 2026 in Nairobi.",
+        "link": "/news",
+        "linkLabel": "See the calendar →"
+      }
+    ]
+  },
+  "mission": {
+    "eyebrow": "The Mission",
+    "heading": "Building Kenya's algorithmic talent — one solved problem at a time.",
+    "paragraphs": [
+      "KIO is the national selection and training pipeline for competitive informatics in Kenya. We work alongside the Kenya Mathematical Olympiad, Summer STEM, and the African Olympiad Academy to give exceptional students a path from secondary school to the global olympiad stage.",
+      "Our 2026 cohort is preparing for the Pan-African Informatics Olympiad in July — and the road to IOI beyond."
+    ]
+  },
+  "pillars": [
+    {
+      "n": "01",
+      "title": "High-Stakes Competition",
+      "body": "Rigorous multi-round selection modeled after International Olympiad standards to find the top 1% of student coders nationwide."
+    },
+    {
+      "n": "02",
+      "title": "Algorithmic Excellence",
+      "body": "Focused training on data structures, graph theory, dynamic programming, and computational geometry. Beyond syntax — we teach problem solving."
+    },
+    {
+      "n": "03",
+      "title": "Global Benchmarking",
+      "body": "Connecting Kenyan students to the Pan-African and International Informatics community through official olympiad circuits."
+    }
+  ],
+  "stats": [
+    { "k": "3", "v": "Rounds of national selection" },
+    { "k": "35+", "v": "Partner secondary schools" },
+    { "k": "4", "v": "Contestants to PAIO 2026" },
+    { "k": "July", "v": "Pan-African Olympiad" }
+  ],
+  "partners": [
+    { "name": "Kenya Mathematical Olympiad", "accent": false },
+    { "name": "Summer STEM", "accent": false },
+    { "name": "African Olympiad Academy", "accent": true }
+  ],
+  "sponsors": {
+    "eyebrow": "Sponsors & Supporters",
+    "heading": "Powered by our partners",
+    "lede": "Organisations and institutions helping put Kenya on the global informatics stage.",
+    "items": [
+      { "name": "Kenya Mathematical Olympiad", "logo": "", "url": "" },
+      { "name": "Summer STEM", "logo": "", "url": "" },
+      { "name": "African Olympiad Academy", "logo": "", "url": "" },
+      { "name": "Ministry of Education", "logo": "", "url": "" }
+    ]
+  },
+  "donateBand": {
+    "eyebrow": "Support KIO",
+    "heading": "Help send Kenya's best to the world stage.",
+    "body": "KIO is run by volunteers and powered by donations. Your support funds training camps, contest infrastructure, and travel for our national team.",
+    "button": "Donate & partner →"
+  },
+  "cta": {
+    "eyebrow": "Cycle 2026",
+    "headingLead": "Think you've got what it takes?",
+    "headingAccent": "Register today.",
+    "button": "Begin registration →"
+  }
+}

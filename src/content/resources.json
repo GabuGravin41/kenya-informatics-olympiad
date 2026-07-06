@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "eyebrow": "Resources",
+    "title": "Learn. Practice. Compete.",
+    "lede": "A curated set of platforms, guides, and tools to help you prepare for the Kenya Informatics Olympiad and beyond — from your first loop to your first IOI-style problem."
+  },
+  "categories": [
+    {
+      "name": "Practice & online judges",
+      "description": "Where to solve problems and sharpen your speed.",
+      "links": [
+        {
+          "title": "Codeforces",
+          "url": "https://codeforces.com",
+          "description": "Regular contests and a huge problem archive with editorials."
+        },
+        {
+          "title": "AtCoder",
+          "url": "https://atcoder.jp",
+          "description": "Beginner-friendly contests with clear difficulty progression."
+        },
+        {
+          "title": "USACO Guide",
+          "url": "https://usaco.guide",
+          "description": "A structured, topic-by-topic path from Bronze to Platinum."
+        }
+      ]
+    },
+    {
+      "name": "Learn & reference",
+      "description": "Tutorials, algorithms, and reference material.",
+      "links": [
+        {
+          "title": "CP-Algorithms",
+          "url": "https://cp-algorithms.com",
+          "description": "Clear write-ups of the algorithms and data structures you'll need."
+        },
+        {
+          "title": "GitHub",
+          "url": "https://github.com",
+          "description": "Host your solutions, collaborate, and explore open-source projects."
+        }
+      ]
+    },
+    {
+      "name": "KIO resources",
+      "description": "Our own material for contestants.",
+      "links": [
+        {
+          "title": "KIO training track",
+          "url": "/training",
+          "description": "How KIO trains and mentors shortlisted students."
+        }
+      ]
+    }
+  ]
+}

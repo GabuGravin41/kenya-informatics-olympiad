@@ -1,0 +1,326 @@
+# KIO admin — Decap CMS config
+#
+# BACKEND SETUP (pick one before going live):
+#
+# 1) NETLIFY (simplest, free)
+#    - Deploy the site to Netlify.
+#    - In Netlify dashboard: enable Identity, set registration to "Invite only",
+#      then enable the Git Gateway service.
+#    - Invite admin coordinators via Identity → Invite users. They confirm the
+#      email and log in at /admin.
+#    - Keep the `backend: git-gateway` block below as-is.
+#
+# 2) VERCEL / CLOUDFLARE PAGES / anywhere else
+#    - Delete the `git-gateway` backend block and use `github` instead:
+#        backend:
+#          name: github
+#          repo: your-org/your-repo
+#          branch: main
+#    - Deploy a small OAuth proxy (free on Cloudflare Workers). See:
+#      https://decapcms.org/docs/external-oauth-clients/
+#    - Add `base_url:` and `auth_endpoint:` pointing at your proxy.
+#
+# After Publish, the site rebuilds automatically (~30s) and changes are live.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# For local testing: run `npx decap-server` in a second terminal, then set
+# local_backend: true here and visit /admin.
+# local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+site_url: https://kio.ke
+display_url: https://kio.ke
+logo_url: /favicon.svg
+
+collections:
+  # ─────────────────────────────────────────────────────────────
+  - name: "site"
+    label: "Site copy (home page)"
+    files:
+      - name: "home"
+        label: "Home page"
+        file: "src/content/site.json"
+        format: "json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title line 1", name: "titleLine1", widget: "string" }
+              - { label: "Title line 2", name: "titleLine2", widget: "string" }
+              - { label: "Title line 3 (accent)", name: "titleLine3", widget: "string" }
+              - { label: "Lede paragraph", name: "lede", widget: "text" }
+              - { label: "Primary CTA text", name: "primaryCta", widget: "string" }
+              - { label: "Secondary CTA text", name: "secondaryCta", widget: "string" }
+          - label: "PAIO announcement card"
+            name: "paioCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "CTA text", name: "cta", widget: "string" }
+          - label: "Announcements (home page)"
+            name: "announcements"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Date (free text)", name: "date", widget: "string" }
+                  - { label: "Tag", name: "tag", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - {
+                      label: "Link (page path like /register or full https URL)",
+                      name: "link",
+                      widget: "string",
+                      required: false,
+                    }
+                  - { label: "Link label", name: "linkLabel", widget: "string", required: false }
+          - label: "Mission section"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "text" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "text", widget: "text" }
+          - label: "Pillars (3 cards)"
+            name: "pillars"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "n", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+          - label: "At-a-glance stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Value", name: "k", widget: "string" }
+              - { label: "Label", name: "v", widget: "string" }
+          - label: "Partners"
+            name: "partners"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Accent colour", name: "accent", widget: "boolean", default: false }
+          - label: "Sponsors (logo marquee)"
+            name: "sponsors"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text", required: false }
+              - label: "Logos"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Logo image", name: "logo", widget: "image", required: false }
+                  - { label: "Website URL", name: "url", widget: "string", required: false }
+          - label: "Donations band (home page)"
+            name: "donateBand"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "Button text", name: "button", widget: "string" }
+          - label: "Bottom CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading lead", name: "headingLead", widget: "string" }
+              - { label: "Heading accent", name: "headingAccent", widget: "string" }
+              - { label: "Button text", name: "button", widget: "string" }
+
+  # ─────────────────────────────────────────────────────────────
+  - name: "team"
+    label: "Team members"
+    files:
+      - name: "team"
+        label: "Team roster"
+        file: "src/content/team.json"
+        format: "json"
+        fields:
+          - label: "Members"
+            name: "members"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Organisation / affiliation", name: "org", widget: "string" }
+              - {
+                  label: "Initials (fallback if no photo)",
+                  name: "initials",
+                  widget: "string",
+                  pattern: ["^.{1,3}$", "1–3 characters"],
+                }
+              - { label: "Photo", name: "image", widget: "image", required: false }
+
+  # ─────────────────────────────────────────────────────────────
+  - name: "news"
+    label: "News & calendar (upcoming)"
+    files:
+      - name: "news"
+        label: "Upcoming events"
+        file: "src/content/news.json"
+        format: "json"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            fields:
+              - { label: "Date (free text, e.g. '10 May 2026')", name: "date", widget: "string" }
+              - { label: "Tag (e.g. Round 01, Camp, Premier)", name: "tag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - {
+                  label: "Highlight as primary event",
+                  name: "primary",
+                  widget: "boolean",
+                  default: false,
+                }
+
+  # ─────────────────────────────────────────────────────────────
+  - name: "past_events"
+    label: "Past events (archive)"
+    files:
+      - name: "past_events"
+        label: "Past events"
+        file: "src/content/events.json"
+        format: "json"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            fields:
+              - {
+                  label: "URL slug (kebab-case, unique)",
+                  name: "slug",
+                  widget: "string",
+                  pattern: ["^[a-z0-9-]+$", "lowercase letters, numbers, hyphens"],
+                }
+              - { label: "Date", name: "date", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Cover image", name: "cover", widget: "image", required: false }
+              - label: "Report paragraphs"
+                name: "report"
+                widget: "list"
+                required: false
+                field: { label: "Paragraph", name: "text", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+              - label: "Gallery"
+                name: "gallery"
+                widget: "list"
+                required: false
+                field: { label: "Photo", name: "image", widget: "image" }
+
+  # ─────────────────────────────────────────────────────────────
+  - name: "support"
+    label: "Support & donations page"
+    files:
+      - name: "support"
+        label: "Support page"
+        file: "src/content/support.json"
+        format: "json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+          - label: "Appeal"
+            name: "appeal"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "text", widget: "text" }
+          - label: "Ways to give"
+            name: "ways"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "Detail (e.g. paybill / account)", name: "detail", widget: "string" }
+          - label: "Contacts"
+            name: "contacts"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Display value (e.g. email)", name: "value", widget: "string" }
+              - { label: "Link (e.g. mailto:you@kio.ke)", name: "href", widget: "string" }
+          - label: "Partnered institutions & ministries"
+            name: "institutions"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo image", name: "logo", widget: "image", required: false }
+              - { label: "Website URL", name: "url", widget: "string", required: false }
+              - {
+                  label: "Note (e.g. Government partner)",
+                  name: "note",
+                  widget: "string",
+                  required: false,
+                }
+
+  # ─────────────────────────────────────────────────────────────
+  - name: "resources"
+    label: "Resources page"
+    files:
+      - name: "resources"
+        label: "Resources page"
+        file: "src/content/resources.json"
+        format: "json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - {
+                      label: "URL (full https URL or on-site path like /training)",
+                      name: "url",
+                      widget: "string",
+                    }
+                  - { label: "Description", name: "description", widget: "text", required: false }

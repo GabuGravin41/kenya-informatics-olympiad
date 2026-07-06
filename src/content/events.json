@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "slug": "launch-assembly-2026",
+      "date": "01 Feb 2026",
+      "location": "Nairobi",
+      "tag": "Launch",
+      "title": "KIO Launch Assembly",
+      "summary": "The Kenya Informatics Olympiad was formally announced alongside the Kenya Mathematical Olympiad, Summer STEM, and the African Olympiad Academy.",
+      "cover": "",
+      "gallery": [],
+      "report": [
+        "The launch brought together coordinators from across the African Olympiad Academy network, school ICT leads, and partner organisations.",
+        "Cycle 2026 opened with a clear road to the Pan-African Informatics Olympiad in July. Registration opened the same evening."
+      ],
+      "stats": [
+        { "label": "Schools represented", "value": "40+" },
+        { "label": "Partners on stage", "value": "4" }
+      ]
+    }
+  ]
+}
