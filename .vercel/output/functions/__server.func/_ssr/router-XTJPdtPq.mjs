@@ -497,8 +497,26 @@ const Route = createFileRoute("/api/auth/callback")({
         const url = new URL(request.url);
         const code = url.searchParams.get("code");
         const state = url.searchParams.get("state");
-        if (!code || !state) {
-          return new Response(JSON.stringify({ error: "Missing code or state parameter" }), {
+        if (!code) {
+          const clientId = process.env.VITE_GITHUB_CLIENT_ID;
+          if (!clientId) {
+            console.error("Missing VITE_GITHUB_CLIENT_ID environment variable");
+            return new Response(JSON.stringify({ error: "Server configuration error" }), {
+              status: 500,
+              headers: { "Content-Type": "application/json" }
+            });
+          }
+          const oauthState = state || Math.random().toString(36).substring(2, 15);
+          const authorizeUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo,user&state=${oauthState}`;
+          return new Response(null, {
+            status: 302,
+            headers: {
+              Location: authorizeUrl
+            }
+          });
+        }
+        if (!state) {
+          return new Response(JSON.stringify({ error: "Missing state parameter from GitHub callback" }), {
             status: 400,
             headers: { "Content-Type": "application/json" }
           });
