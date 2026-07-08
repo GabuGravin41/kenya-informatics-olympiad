@@ -94,11 +94,12 @@ export const Route = createFileRoute("/api/auth/callback")({
                   const token = "${token}";
                   const state = "${state}";
                   
-                  // Send token back to Decap CMS via postMessage
-                  window.opener.postMessage({
-                    type: 'authorization:github',
-                    payload: { token, state }
-                  }, window.location.origin);
+                  // Send token back to Decap CMS via postMessage in the format it expects
+                  const message = "authorization:github:success:" + JSON.stringify({
+                    token: token,
+                    provider: "github"
+                  });
+                  window.opener.postMessage(message, window.location.origin);
                   
                   // Close the popup
                   window.close();
