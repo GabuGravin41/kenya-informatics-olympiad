@@ -6,8 +6,8 @@
 #    - Go to https://github.com/settings/developers
 #    - New OAuth App → fill in:
 #      - Application name: "KIO CMS"
-#      - Homepage URL: https://kio.ke
-#      - Authorization callback URL: https://kio.ke/admin/
+#      - Homepage URL: https://kenya-informatics-olympiad.vercel.app
+#      - Authorization callback URL: https://kenya-informatics-olympiad.vercel.app/admin/
 #    - Copy Client ID and generate Client Secret
 #
 # 2. Add to Vercel environment variables:
@@ -22,7 +22,7 @@
 
 backend:
   name: github
-  repo: https://github.com/GabuGravin41/kenya-informatics-olympiad  # Update this
+  repo: GabuGravin41/kenya-informatics-olympiad
   branch: main
   base_url: https://kenya-informatics-olympiad.vercel.app
   auth_endpoint: /api/auth/callback

@@ -80,7 +80,7 @@ function ErrorComponent({ error, reset }) {
     ] })
   ] }) });
 }
-const Route$e = createRootRouteWithContext()({
+const Route$f = createRootRouteWithContext()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -121,11 +121,11 @@ function RootShell({ children }) {
   ] });
 }
 function RootComponent() {
-  const { queryClient } = Route$e.useRouteContext();
+  const { queryClient } = Route$f.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) });
 }
 const $$splitComponentImporter$c = () => import("./training-BcbUYNJa.mjs");
-const Route$d = createFileRoute("/training")({
+const Route$e = createFileRoute("/training")({
   head: () => ({
     meta: [{
       title: "Training & Resources — Kenya Informatics Olympiad"
@@ -150,7 +150,7 @@ const Route$d = createFileRoute("/training")({
   component: lazyRouteComponent($$splitComponentImporter$c, "component")
 });
 const $$splitComponentImporter$b = () => import("./terms-D8JxA8if.mjs");
-const Route$c = createFileRoute("/terms")({
+const Route$d = createFileRoute("/terms")({
   head: () => ({
     meta: [{
       title: "Terms of Use — Kenya Informatics Olympiad"
@@ -175,7 +175,7 @@ const Route$c = createFileRoute("/terms")({
   component: lazyRouteComponent($$splitComponentImporter$b, "component")
 });
 const $$splitComponentImporter$a = () => import("./team-CJsQ3PNN.mjs");
-const Route$b = createFileRoute("/team")({
+const Route$c = createFileRoute("/team")({
   head: () => ({
     meta: [{
       title: "Team — Kenya Informatics Olympiad"
@@ -200,7 +200,7 @@ const Route$b = createFileRoute("/team")({
   component: lazyRouteComponent($$splitComponentImporter$a, "component")
 });
 const $$splitComponentImporter$9 = () => import("./support-hWGLK47-.mjs");
-const Route$a = createFileRoute("/support")({
+const Route$b = createFileRoute("/support")({
   head: () => ({
     meta: [{
       title: "Support & Donations — Kenya Informatics Olympiad"
@@ -225,7 +225,7 @@ const Route$a = createFileRoute("/support")({
   component: lazyRouteComponent($$splitComponentImporter$9, "component")
 });
 const BASE_URL = "";
-const Route$9 = createFileRoute("/sitemap.xml")({
+const Route$a = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
@@ -266,7 +266,7 @@ ${urls}
   }
 });
 const $$splitComponentImporter$8 = () => import("./resources-DZERWYQo.mjs");
-const Route$8 = createFileRoute("/resources")({
+const Route$9 = createFileRoute("/resources")({
   head: () => ({
     meta: [{
       title: "Resources — Kenya Informatics Olympiad"
@@ -291,7 +291,7 @@ const Route$8 = createFileRoute("/resources")({
   component: lazyRouteComponent($$splitComponentImporter$8, "component")
 });
 const $$splitComponentImporter$7 = () => import("./register-DtcT9Hxh.mjs");
-const Route$7 = createFileRoute("/register")({
+const Route$8 = createFileRoute("/register")({
   head: () => ({
     meta: [{
       title: "Register — Kenya Informatics Olympiad 2026"
@@ -316,7 +316,7 @@ const Route$7 = createFileRoute("/register")({
   component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
 const $$splitComponentImporter$6 = () => import("./privacy-Bz8EscCO.mjs");
-const Route$6 = createFileRoute("/privacy")({
+const Route$7 = createFileRoute("/privacy")({
   head: () => ({
     meta: [{
       title: "Privacy Policy — Kenya Informatics Olympiad"
@@ -341,7 +341,7 @@ const Route$6 = createFileRoute("/privacy")({
   component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
 const $$splitComponentImporter$5 = () => import("./news-C6LxeL8O.mjs");
-const Route$5 = createFileRoute("/news")({
+const Route$6 = createFileRoute("/news")({
   head: () => ({
     meta: [{
       title: "News & Events — Kenya Informatics Olympiad"
@@ -366,7 +366,7 @@ const Route$5 = createFileRoute("/news")({
   component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
 const $$splitComponentImporter$4 = () => import("./events-DazCUjE_.mjs");
-const Route$4 = createFileRoute("/events")({
+const Route$5 = createFileRoute("/events")({
   head: () => ({
     meta: [{
       title: "Past Events — Kenya Informatics Olympiad"
@@ -391,7 +391,7 @@ const Route$4 = createFileRoute("/events")({
   component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
 const $$splitComponentImporter$3 = () => import("./contact-CbYKx3m1.mjs");
-const Route$3 = createFileRoute("/contact")({
+const Route$4 = createFileRoute("/contact")({
   head: () => ({
     meta: [{
       title: "Contact — Kenya Informatics Olympiad"
@@ -416,7 +416,7 @@ const Route$3 = createFileRoute("/contact")({
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
 const $$splitComponentImporter$2 = () => import("./competition-CINj0D2U.mjs");
-const Route$2 = createFileRoute("/competition")({
+const Route$3 = createFileRoute("/competition")({
   head: () => ({
     meta: [{
       title: "Competition — Kenya Informatics Olympiad"
@@ -441,7 +441,7 @@ const Route$2 = createFileRoute("/competition")({
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
 const $$splitComponentImporter$1 = () => import("./about-C-RkYQu0.mjs");
-const Route$1 = createFileRoute("/about")({
+const Route$2 = createFileRoute("/about")({
   head: () => ({
     meta: [{
       title: "About — Kenya Informatics Olympiad"
@@ -466,7 +466,7 @@ const Route$1 = createFileRoute("/about")({
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
 const $$splitComponentImporter = () => import("./index-Dtog-0Pf.mjs");
-const Route = createFileRoute("/")({
+const Route$1 = createFileRoute("/")({
   head: () => ({
     meta: [{
       title: "Kenya Informatics Olympiad — Road to PAIO 2026"
@@ -490,75 +490,165 @@ const Route = createFileRoute("/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter, "component")
 });
-const TrainingRoute = Route$d.update({
+const Route = createFileRoute("/api/auth/callback")({
+  server: {
+    handlers: {
+      GET: async ({ request }) => {
+        const url = new URL(request.url);
+        const code = url.searchParams.get("code");
+        const state = url.searchParams.get("state");
+        if (!code || !state) {
+          return new Response(JSON.stringify({ error: "Missing code or state parameter" }), {
+            status: 400,
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+        try {
+          const clientId = process.env.VITE_GITHUB_CLIENT_ID;
+          const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+          if (!clientId || !clientSecret) {
+            console.error("Missing GitHub OAuth environment variables");
+            return new Response(JSON.stringify({ error: "Server configuration error" }), {
+              status: 500,
+              headers: { "Content-Type": "application/json" }
+            });
+          }
+          const tokenResponse = await fetch("https://github.com/login/oauth/access_token", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify({
+              client_id: clientId,
+              client_secret: clientSecret,
+              code,
+              state
+            })
+          });
+          const tokenData = await tokenResponse.json();
+          if (tokenData.error) {
+            console.error("GitHub OAuth error:", tokenData.error_description);
+            return new Response(JSON.stringify({ error: "Authentication failed" }), {
+              status: 401,
+              headers: { "Content-Type": "application/json" }
+            });
+          }
+          const token = tokenData.access_token;
+          const htmlContent = `
+            <!doctype html>
+            <html>
+              <head>
+                <title>Authenticating...</title>
+              </head>
+              <body>
+                <script>
+                  const token = "${token}";
+                  const state = "${state}";
+                  
+                  // Send token back to Decap CMS via postMessage
+                  window.opener.postMessage({
+                    type: 'authorization:github',
+                    payload: { token, state }
+                  }, window.location.origin);
+                  
+                  // Close the popup
+                  window.close();
+                <\/script>
+              </body>
+            </html>
+          `;
+          return new Response(htmlContent, {
+            status: 200,
+            headers: {
+              "Content-Type": "text/html"
+            }
+          });
+        } catch (error) {
+          console.error("OAuth callback error:", error);
+          return new Response(JSON.stringify({ error: "Internal server error" }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+      }
+    }
+  }
+});
+const TrainingRoute = Route$e.update({
   id: "/training",
   path: "/training",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const TermsRoute = Route$c.update({
+const TermsRoute = Route$d.update({
   id: "/terms",
   path: "/terms",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const TeamRoute = Route$b.update({
+const TeamRoute = Route$c.update({
   id: "/team",
   path: "/team",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const SupportRoute = Route$a.update({
+const SupportRoute = Route$b.update({
   id: "/support",
   path: "/support",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const SitemapDotxmlRoute = Route$9.update({
+const SitemapDotxmlRoute = Route$a.update({
   id: "/sitemap.xml",
   path: "/sitemap.xml",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const ResourcesRoute = Route$8.update({
+const ResourcesRoute = Route$9.update({
   id: "/resources",
   path: "/resources",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const RegisterRoute = Route$7.update({
+const RegisterRoute = Route$8.update({
   id: "/register",
   path: "/register",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const PrivacyRoute = Route$6.update({
+const PrivacyRoute = Route$7.update({
   id: "/privacy",
   path: "/privacy",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const NewsRoute = Route$5.update({
+const NewsRoute = Route$6.update({
   id: "/news",
   path: "/news",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const EventsRoute = Route$4.update({
+const EventsRoute = Route$5.update({
   id: "/events",
   path: "/events",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const ContactRoute = Route$3.update({
+const ContactRoute = Route$4.update({
   id: "/contact",
   path: "/contact",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const CompetitionRoute = Route$2.update({
+const CompetitionRoute = Route$3.update({
   id: "/competition",
   path: "/competition",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const AboutRoute = Route$1.update({
+const AboutRoute = Route$2.update({
   id: "/about",
   path: "/about",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
 });
-const IndexRoute = Route.update({
+const IndexRoute = Route$1.update({
   id: "/",
   path: "/",
-  getParentRoute: () => Route$e
+  getParentRoute: () => Route$f
+});
+const ApiAuthCallbackRoute = Route.update({
+  id: "/api/auth/callback",
+  path: "/api/auth/callback",
+  getParentRoute: () => Route$f
 });
 const rootRouteChildren = {
   IndexRoute,
@@ -574,9 +664,10 @@ const rootRouteChildren = {
   SupportRoute,
   TeamRoute,
   TermsRoute,
-  TrainingRoute
+  TrainingRoute,
+  ApiAuthCallbackRoute
 };
-const routeTree = Route$e._addFileChildren(rootRouteChildren)._addFileTypes();
+const routeTree = Route$f._addFileChildren(rootRouteChildren)._addFileTypes();
 const getRouter = () => {
   const queryClient = new QueryClient();
   const router = createRouter({

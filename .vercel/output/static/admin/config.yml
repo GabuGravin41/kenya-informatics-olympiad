@@ -1,30 +1,31 @@
 # KIO admin — Decap CMS config
 #
-# BACKEND SETUP (pick one before going live):
+# SETUP FOR VERCEL DEPLOYMENT:
 #
-# 1) NETLIFY (simplest, free)
-#    - Deploy the site to Netlify.
-#    - In Netlify dashboard: enable Identity, set registration to "Invite only",
-#      then enable the Git Gateway service.
-#    - Invite admin coordinators via Identity → Invite users. They confirm the
-#      email and log in at /admin.
-#    - Keep the `backend: git-gateway` block below as-is.
+# 1. Create a GitHub OAuth App:
+#    - Go to https://github.com/settings/developers
+#    - New OAuth App → fill in:
+#      - Application name: "KIO CMS"
+#      - Homepage URL: https://kenya-informatics-olympiad.vercel.app
+#      - Authorization callback URL: https://kenya-informatics-olympiad.vercel.app/admin/
+#    - Copy Client ID and generate Client Secret
 #
-# 2) VERCEL / CLOUDFLARE PAGES / anywhere else
-#    - Delete the `git-gateway` backend block and use `github` instead:
-#        backend:
-#          name: github
-#          repo: your-org/your-repo
-#          branch: main
-#    - Deploy a small OAuth proxy (free on Cloudflare Workers). See:
-#      https://decapcms.org/docs/external-oauth-clients/
-#    - Add `base_url:` and `auth_endpoint:` pointing at your proxy.
+# 2. Add to Vercel environment variables:
+#    - VITE_GITHUB_CLIENT_ID: [your Client ID]
+#    - GITHUB_CLIENT_SECRET: [your Client Secret]
+#
+# 3. Deploy the OAuth proxy on Vercel:
+#    - Create /api/auth/callback.ts (see instructions below)
+#    - This handles the GitHub OAuth flow securely
 #
 # After Publish, the site rebuilds automatically (~30s) and changes are live.
 
 backend:
-  name: git-gateway
+  name: github
+  repo: GabuGravin41/kenya-informatics-olympiad
   branch: main
+  base_url: https://kenya-informatics-olympiad.vercel.app
+  auth_endpoint: /api/auth/callback
 
 # For local testing: run `npx decap-server` in a second terminal, then set
 # local_backend: true here and visit /admin.
@@ -33,8 +34,8 @@ backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-site_url: https://kio.ke
-display_url: https://kio.ke
+site_url: https://kenya-informatics-olympiad.vercel.app
+display_url: https://kenya-informatics-olympiad.vercel.app
 logo_url: /favicon.svg
 
 collections:

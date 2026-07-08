@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>KIO Admin</title>
+    <!-- Explicitly set absolute config path to avoid trailing slash 404 issues -->
+    <link href="/admin/config.yml" type="yaml" rel="cms-config-url" />
   </head>
   <body>
-    <!-- Netlify Identity widget (only used when hosting on Netlify with git-gateway) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
