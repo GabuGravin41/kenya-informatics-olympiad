@@ -1,8 +1,10 @@
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 import { r as reactExports, j as jsxRuntimeExports } from "./react.mjs";
 var QueryClientContext = reactExports.createContext(
   void 0
 );
-var QueryClientProvider = ({
+var QueryClientProvider = /* @__PURE__ */ __name(({
   client,
   children
 }) => {
@@ -13,7 +15,7 @@ var QueryClientProvider = ({
     };
   }, [client]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientContext.Provider, { value: client, children });
-};
+}, "QueryClientProvider");
 export {
   QueryClientProvider as Q
 };

@@ -21,10 +21,14 @@ import { Route as NewsRouteImport } from './routes/news'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompetitionRouteImport } from './routes/competition'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ApiAuthTokenRouteImport } from './routes/api.auth.token'
-import { Route as ApiAuthCallbackRouteImport } from './routes/api.auth.callback'
+import { Route as ApiAdminMeRouteImport } from './routes/api.admin.me'
+import { Route as ApiAdminContentFileRouteImport } from './routes/api.admin.content.$file'
+import { Route as ApiAdminAuthLogoutRouteImport } from './routes/api.admin.auth.logout'
+import { Route as ApiAdminAuthLoginRouteImport } from './routes/api.admin.auth.login'
+import { Route as ApiAdminAuthCallbackRouteImport } from './routes/api.admin.auth.callback'
 
 const TrainingRoute = TrainingRouteImport.update({
   id: '/training',
@@ -86,6 +90,11 @@ const CompetitionRoute = CompetitionRouteImport.update({
   path: '/competition',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -96,20 +105,36 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAuthTokenRoute = ApiAuthTokenRouteImport.update({
-  id: '/api/auth/token',
-  path: '/api/auth/token',
+const ApiAdminMeRoute = ApiAdminMeRouteImport.update({
+  id: '/api/admin/me',
+  path: '/api/admin/me',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAuthCallbackRoute = ApiAuthCallbackRouteImport.update({
-  id: '/api/auth/callback',
-  path: '/api/auth/callback',
+const ApiAdminContentFileRoute = ApiAdminContentFileRouteImport.update({
+  id: '/api/admin/content/$file',
+  path: '/api/admin/content/$file',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAuthLogoutRoute = ApiAdminAuthLogoutRouteImport.update({
+  id: '/api/admin/auth/logout',
+  path: '/api/admin/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAuthLoginRoute = ApiAdminAuthLoginRouteImport.update({
+  id: '/api/admin/auth/login',
+  path: '/api/admin/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAuthCallbackRoute = ApiAdminAuthCallbackRouteImport.update({
+  id: '/api/admin/auth/callback',
+  path: '/api/admin/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/competition': typeof CompetitionRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
@@ -122,12 +147,16 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
-  '/api/auth/token': typeof ApiAuthTokenRoute
+  '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/auth/callback': typeof ApiAdminAuthCallbackRoute
+  '/api/admin/auth/login': typeof ApiAdminAuthLoginRoute
+  '/api/admin/auth/logout': typeof ApiAdminAuthLogoutRoute
+  '/api/admin/content/$file': typeof ApiAdminContentFileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/competition': typeof CompetitionRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
@@ -140,13 +169,17 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
-  '/api/auth/token': typeof ApiAuthTokenRoute
+  '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/auth/callback': typeof ApiAdminAuthCallbackRoute
+  '/api/admin/auth/login': typeof ApiAdminAuthLoginRoute
+  '/api/admin/auth/logout': typeof ApiAdminAuthLogoutRoute
+  '/api/admin/content/$file': typeof ApiAdminContentFileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/competition': typeof CompetitionRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
@@ -159,14 +192,18 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
-  '/api/auth/callback': typeof ApiAuthCallbackRoute
-  '/api/auth/token': typeof ApiAuthTokenRoute
+  '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/auth/callback': typeof ApiAdminAuthCallbackRoute
+  '/api/admin/auth/login': typeof ApiAdminAuthLoginRoute
+  '/api/admin/auth/logout': typeof ApiAdminAuthLogoutRoute
+  '/api/admin/content/$file': typeof ApiAdminContentFileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/competition'
     | '/contact'
     | '/events'
@@ -179,12 +216,16 @@ export interface FileRouteTypes {
     | '/team'
     | '/terms'
     | '/training'
-    | '/api/auth/callback'
-    | '/api/auth/token'
+    | '/api/admin/me'
+    | '/api/admin/auth/callback'
+    | '/api/admin/auth/login'
+    | '/api/admin/auth/logout'
+    | '/api/admin/content/$file'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/competition'
     | '/contact'
     | '/events'
@@ -197,12 +238,16 @@ export interface FileRouteTypes {
     | '/team'
     | '/terms'
     | '/training'
-    | '/api/auth/callback'
-    | '/api/auth/token'
+    | '/api/admin/me'
+    | '/api/admin/auth/callback'
+    | '/api/admin/auth/login'
+    | '/api/admin/auth/logout'
+    | '/api/admin/content/$file'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/competition'
     | '/contact'
     | '/events'
@@ -215,13 +260,17 @@ export interface FileRouteTypes {
     | '/team'
     | '/terms'
     | '/training'
-    | '/api/auth/callback'
-    | '/api/auth/token'
+    | '/api/admin/me'
+    | '/api/admin/auth/callback'
+    | '/api/admin/auth/login'
+    | '/api/admin/auth/logout'
+    | '/api/admin/content/$file'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   CompetitionRoute: typeof CompetitionRoute
   ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
@@ -234,8 +283,11 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
   TrainingRoute: typeof TrainingRoute
-  ApiAuthCallbackRoute: typeof ApiAuthCallbackRoute
-  ApiAuthTokenRoute: typeof ApiAuthTokenRoute
+  ApiAdminMeRoute: typeof ApiAdminMeRoute
+  ApiAdminAuthCallbackRoute: typeof ApiAdminAuthCallbackRoute
+  ApiAdminAuthLoginRoute: typeof ApiAdminAuthLoginRoute
+  ApiAdminAuthLogoutRoute: typeof ApiAdminAuthLogoutRoute
+  ApiAdminContentFileRoute: typeof ApiAdminContentFileRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -324,6 +376,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompetitionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -338,18 +397,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/auth/token': {
-      id: '/api/auth/token'
-      path: '/api/auth/token'
-      fullPath: '/api/auth/token'
-      preLoaderRoute: typeof ApiAuthTokenRouteImport
+    '/api/admin/me': {
+      id: '/api/admin/me'
+      path: '/api/admin/me'
+      fullPath: '/api/admin/me'
+      preLoaderRoute: typeof ApiAdminMeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/auth/callback': {
-      id: '/api/auth/callback'
-      path: '/api/auth/callback'
-      fullPath: '/api/auth/callback'
-      preLoaderRoute: typeof ApiAuthCallbackRouteImport
+    '/api/admin/content/$file': {
+      id: '/api/admin/content/$file'
+      path: '/api/admin/content/$file'
+      fullPath: '/api/admin/content/$file'
+      preLoaderRoute: typeof ApiAdminContentFileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/auth/logout': {
+      id: '/api/admin/auth/logout'
+      path: '/api/admin/auth/logout'
+      fullPath: '/api/admin/auth/logout'
+      preLoaderRoute: typeof ApiAdminAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/auth/login': {
+      id: '/api/admin/auth/login'
+      path: '/api/admin/auth/login'
+      fullPath: '/api/admin/auth/login'
+      preLoaderRoute: typeof ApiAdminAuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/auth/callback': {
+      id: '/api/admin/auth/callback'
+      path: '/api/admin/auth/callback'
+      fullPath: '/api/admin/auth/callback'
+      preLoaderRoute: typeof ApiAdminAuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -358,6 +438,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   CompetitionRoute: CompetitionRoute,
   ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
@@ -370,8 +451,11 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
   TrainingRoute: TrainingRoute,
-  ApiAuthCallbackRoute: ApiAuthCallbackRoute,
-  ApiAuthTokenRoute: ApiAuthTokenRoute,
+  ApiAdminMeRoute: ApiAdminMeRoute,
+  ApiAdminAuthCallbackRoute: ApiAdminAuthCallbackRoute,
+  ApiAdminAuthLoginRoute: ApiAdminAuthLoginRoute,
+  ApiAdminAuthLogoutRoute: ApiAdminAuthLogoutRoute,
+  ApiAdminContentFileRoute: ApiAdminContentFileRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
