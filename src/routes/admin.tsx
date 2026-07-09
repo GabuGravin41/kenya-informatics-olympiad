@@ -1,6 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import { getSession } from "../lib/session";
 import AdminApp from "../components/admin/AdminApp";
+
+const checkSession = createServerFn({ method: "GET" })
+  .handler(async () => {
+    const { getWebRequest } = await import("@tanstack/react-start/server");
+    const req = getWebRequest();
+    const loggedIn = req ? !!(await getSession(req)) : false;
+    return { loggedIn };
+  });
 
 /**
  * /admin
@@ -15,11 +24,8 @@ export const Route = createFileRoute("/admin")({
       { name: "robots", content: "noindex" },
     ],
   }),
-  loader: async ({ context }) => {
-    // context.request is available in TanStack Start server loaders
-    const req = (context as { request?: Request }).request;
-    const loggedIn = req ? !!(await getSession(req)) : false;
-    return { loggedIn };
+  loader: async () => {
+    return await checkSession();
   },
   component: AdminRoute,
 });
@@ -28,3 +34,4 @@ function AdminRoute() {
   const { loggedIn } = Route.useLoaderData();
   return <AdminApp loggedIn={loggedIn} />;
 }
+
