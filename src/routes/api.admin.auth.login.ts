@@ -20,18 +20,15 @@ export const Route = createFileRoute("/api/admin/auth/login")({
 
         // Generate a random state value and store it in a short-lived cookie
         const state = crypto.randomUUID();
-        const stateCookie = `kio_oauth_state=${state}; Path=/api/admin/auth; HttpOnly; SameSite=Lax; Max-Age=600`;
+        // Path=/ so the cookie is readable by /api/admin/auth/callback
+        const stateCookie = `kio_oauth_state=${state}; Path=/; HttpOnly; SameSite=Lax; Max-Age=600`;
 
-        // Determine where GitHub should redirect back after login
-        const host = request.headers.get("host") || "kenya-informatics-olympiad.vercel.app";
-        const proto = process.env.NODE_ENV === "production" ? "https" : "http";
-        const callbackUrl = `${proto}://${host}/api/admin/auth/callback`;
-
+        // Do NOT pass redirect_uri — GitHub will use the exact URL registered
+        // in the OAuth App settings, avoiding any mismatch errors.
         const authorizeUrl = new URL("https://github.com/login/oauth/authorize");
         authorizeUrl.searchParams.set("client_id", clientId);
         authorizeUrl.searchParams.set("scope", "repo");
         authorizeUrl.searchParams.set("state", state);
-        authorizeUrl.searchParams.set("redirect_uri", callbackUrl);
 
         return new Response(null, {
           status: 302,
