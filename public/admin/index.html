@@ -9,6 +9,28 @@
     <link href="/admin/config.yml" type="yaml" rel="cms-config-url" />
   </head>
   <body>
+    <!--
+      BroadcastChannel relay:
+      Decap CMS listens for 'message' events on 'window'.
+      Our callback.html sends the token via BroadcastChannel (because window.opener
+      is null after a cross-origin redirect through GitHub).
+      This script bridges BroadcastChannel → window.postMessage so Decap CMS receives it.
+    -->
+    <script>
+      try {
+        var bc = new BroadcastChannel('decap-cms-auth');
+        bc.onmessage = function(event) {
+          if (event.data && event.data.message) {
+            // Forward to window so Decap CMS picks it up
+            window.postMessage(event.data.message, window.location.origin);
+          }
+          bc.close();
+        };
+      } catch (e) {
+        console.warn('[admin] BroadcastChannel not supported:', e);
+      }
+    </script>
+
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
