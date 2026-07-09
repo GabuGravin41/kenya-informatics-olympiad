@@ -23,6 +23,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompetitionRouteImport } from './routes/competition'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiAuthTokenRouteImport } from './routes/api.auth.token'
 import { Route as ApiAuthCallbackRouteImport } from './routes/api.auth.callback'
 
 const TrainingRoute = TrainingRouteImport.update({
@@ -95,6 +96,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAuthTokenRoute = ApiAuthTokenRouteImport.update({
+  id: '/api/auth/token',
+  path: '/api/auth/token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthCallbackRoute = ApiAuthCallbackRouteImport.update({
   id: '/api/auth/callback',
   path: '/api/auth/callback',
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/api/auth/token': typeof ApiAuthTokenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/api/auth/token': typeof ApiAuthTokenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/api/auth/token': typeof ApiAuthTokenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/training'
     | '/api/auth/callback'
+    | '/api/auth/token'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -188,6 +198,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/training'
     | '/api/auth/callback'
+    | '/api/auth/token'
   id:
     | '__root__'
     | '/'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/training'
     | '/api/auth/callback'
+    | '/api/auth/token'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -223,6 +235,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TrainingRoute: typeof TrainingRoute
   ApiAuthCallbackRoute: typeof ApiAuthCallbackRoute
+  ApiAuthTokenRoute: typeof ApiAuthTokenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/auth/token': {
+      id: '/api/auth/token'
+      path: '/api/auth/token'
+      fullPath: '/api/auth/token'
+      preLoaderRoute: typeof ApiAuthTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/auth/callback': {
       id: '/api/auth/callback'
       path: '/api/auth/callback'
@@ -351,6 +371,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TrainingRoute: TrainingRoute,
   ApiAuthCallbackRoute: ApiAuthCallbackRoute,
+  ApiAuthTokenRoute: ApiAuthTokenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

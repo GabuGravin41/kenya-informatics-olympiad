@@ -7,7 +7,7 @@
 #    - New OAuth App → fill in:
 #      - Application name: "KIO CMS"
 #      - Homepage URL: https://kenya-informatics-olympiad.vercel.app
-#      - Authorization callback URL: https://kenya-informatics-olympiad.vercel.app/admin/
+#      - Authorization callback URL: https://kenya-informatics-olympiad.vercel.app/admin/callback.html
 #    - Copy Client ID and generate Client Secret
 #
 # 2. Add to Vercel environment variables:
