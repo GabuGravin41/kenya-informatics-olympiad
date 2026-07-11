@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Cycle 2026 // Now Open",
+    "eyebrow": "Cycle 2027 // Now Open",
     "titleLine1": "Kenya",
     "titleLine2": "Informatics",
     "titleLine3": "Olympiad",
@@ -62,25 +62,62 @@
     }
   ],
   "stats": [
-    { "k": "3", "v": "Rounds of national selection" },
-    { "k": "35+", "v": "Partner secondary schools" },
-    { "k": "4", "v": "Contestants to PAIO 2026" },
-    { "k": "July", "v": "Pan-African Olympiad" }
+    {
+      "k": "3",
+      "v": "Rounds of national selection"
+    },
+    {
+      "k": "35+",
+      "v": "Partner secondary schools"
+    },
+    {
+      "k": "4",
+      "v": "Contestants to PAIO 2026"
+    },
+    {
+      "k": "July",
+      "v": "Pan-African Olympiad"
+    }
   ],
   "partners": [
-    { "name": "Kenya Mathematical Olympiad", "accent": false },
-    { "name": "Summer STEM", "accent": false },
-    { "name": "African Olympiad Academy", "accent": true }
+    {
+      "name": "Kenya Mathematical Olympiad",
+      "accent": false
+    },
+    {
+      "name": "Summer STEM",
+      "accent": false
+    },
+    {
+      "name": "African Olympiad Academy",
+      "accent": true
+    }
   ],
   "sponsors": {
     "eyebrow": "Sponsors & Supporters",
     "heading": "Powered by our partners",
     "lede": "Organisations and institutions helping put Kenya on the global informatics stage.",
     "items": [
-      { "name": "Kenya Mathematical Olympiad", "logo": "", "url": "" },
-      { "name": "Summer STEM", "logo": "", "url": "" },
-      { "name": "African Olympiad Academy", "logo": "", "url": "" },
-      { "name": "Ministry of Education", "logo": "", "url": "" }
+      {
+        "name": "Kenya Mathematical Olympiad",
+        "logo": "",
+        "url": ""
+      },
+      {
+        "name": "Summer STEM",
+        "logo": "",
+        "url": ""
+      },
+      {
+        "name": "African Olympiad Academy",
+        "logo": "",
+        "url": ""
+      },
+      {
+        "name": "Ministry of Education",
+        "logo": "",
+        "url": ""
+      }
     ]
   },
   "donateBand": {
