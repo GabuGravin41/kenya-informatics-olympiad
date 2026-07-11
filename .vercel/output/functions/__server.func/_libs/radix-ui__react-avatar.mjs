@@ -1,5 +1,3 @@
-var __defProp = Object.defineProperty;
-var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 import { r as reactExports, j as jsxRuntimeExports } from "./react.mjs";
 import { c as createContextScope } from "./radix-ui__react-context.mjs";
 import { u as useCallbackRef } from "./@radix-ui/react-use-callback-ref+[...].mjs";
@@ -86,11 +84,11 @@ function useImageLoadingStatus(src, {
       return;
     }
     const image = new window.Image();
-    const handleLoad = /* @__PURE__ */ __name((event) => {
+    const handleLoad = (event) => {
       const image2 = event.currentTarget;
       setLoadingStatus(getImageLoadingStatus(image2));
-    }, "handleLoad");
-    const handleError = /* @__PURE__ */ __name(() => setLoadingStatus("error"), "handleError");
+    };
+    const handleError = () => setLoadingStatus("error");
     image.addEventListener("load", handleLoad);
     image.addEventListener("error", handleError);
     if (referrerPolicy) {
@@ -107,11 +105,9 @@ function useImageLoadingStatus(src, {
   }, [src, crossOrigin, referrerPolicy, setLoadingStatus]);
   return loadingStatus;
 }
-__name(useImageLoadingStatus, "useImageLoadingStatus");
 function getImageLoadingStatus(image) {
   return image.complete ? image.naturalWidth > 0 ? "loaded" : "error" : "loading";
 }
-__name(getImageLoadingStatus, "getImageLoadingStatus");
 function useImageCount() {
   let state = STATIC_IMAGE_COUNT_STATE;
   {
@@ -129,7 +125,6 @@ function useImageCount() {
   }
   return state;
 }
-__name(useImageCount, "useImageCount");
 function useUpdateImageCount(setImageCount) {
   {
     reactExports.useEffect(() => {
@@ -140,7 +135,6 @@ function useUpdateImageCount(setImageCount) {
     }, [setImageCount]);
   }
 }
-__name(useUpdateImageCount, "useUpdateImageCount");
 export {
   Avatar as A,
   AvatarImage as a,
