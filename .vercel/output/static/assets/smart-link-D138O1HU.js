@@ -1,1 +1,0 @@
-import{j as e,L as s}from"./index-BLCuBLHw.js";function o({to:r,className:n,children:t}){return r.startsWith("/")?e.jsx(s,{to:r,className:n,children:t}):e.jsx("a",{href:r,target:"_blank",rel:"noreferrer noopener",className:n,children:t})}export{o as S};
