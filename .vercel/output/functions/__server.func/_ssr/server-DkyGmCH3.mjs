@@ -64,6 +64,9 @@ function getH3Event() {
   if (!event) throw new Error(`No StartEvent found in AsyncLocalStorage. Make sure you are using the function within the server runtime.`);
   return event.h3Event;
 }
+function getRequest() {
+  return getH3Event().req;
+}
 function getResponse() {
   return getH3Event().res;
 }
@@ -91,7 +94,7 @@ async function getStartManifest(matchedRoutes) {
 const manifest = {
   "f98cc289e24012ae518ca8d45587a54ab715cd67138b8db7ad8200f169da4cc0": {
     functionName: "checkSession_createServerFn_handler",
-    importer: () => import("./admin-91jbYuMU.mjs")
+    importer: () => import("./admin-DgQbC0gn.mjs")
   }
 };
 async function getServerFnById(id, access) {
@@ -1331,8 +1334,8 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-C8pvI0pX.mjs").then((n) => n.r),
-    import("./start-C5ijmj4u.mjs"),
+    import("./router-Bc8oRwLe.mjs").then((n) => n.r),
+    import("./start-BMcAQHru.mjs"),
     import("./empty-plugin-adapters-BFgPZ6_d.mjs")
   ]);
   return {
@@ -1677,21 +1680,22 @@ const server = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   createServerEntry,
   default: server_default
 }, Symbol.toStringTag, { value: "Module" }));
-const serverBpkhpwGp = /* @__PURE__ */ Object.freeze({
+const serverCjupIydB = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   H: HEADERS,
   S: StartServer,
   T: TSS_SERVER_FUNCTION,
-  a: createMiddleware,
-  b: createServerFn,
+  a: getResponse,
+  b: createMiddleware,
   c: createStartHandler,
   d: defaultStreamHandler,
-  e: getServerFnById,
-  g: getResponse,
+  e: createServerFn,
+  f: getServerFnById,
+  g: getRequest,
   r: requestHandler,
   s: server
 });
-const serverCG6M_atp = /* @__PURE__ */ Object.freeze({
+const serverDkyGmCH3 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   HEADERS,
   StartServer,
@@ -1699,6 +1703,7 @@ const serverCG6M_atp = /* @__PURE__ */ Object.freeze({
   createStartHandler,
   defaultStreamHandler,
   defineHandlerCallback,
+  getRequest,
   getResponse,
   requestHandler,
   transformPipeableStreamWithRouter,
@@ -1707,8 +1712,8 @@ const serverCG6M_atp = /* @__PURE__ */ Object.freeze({
 export {
   TSS_SERVER_FUNCTION as T,
   createMiddleware as a,
-  serverCG6M_atp as b,
+  serverDkyGmCH3 as b,
   createServerFn as c,
   getServerFnById as g,
-  serverBpkhpwGp as s
+  serverCjupIydB as s
 };

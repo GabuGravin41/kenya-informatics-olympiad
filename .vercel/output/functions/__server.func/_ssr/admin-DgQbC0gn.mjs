@@ -1,4 +1,4 @@
-import { T as TSS_SERVER_FUNCTION, c as createServerFn } from "./server-CG6M_atp.mjs";
+import { T as TSS_SERVER_FUNCTION, c as createServerFn } from "./server-DkyGmCH3.mjs";
 import { g as getSession } from "./session-DiUO9xOm.mjs";
 import "../_libs/seroval.mjs";
 import "../_libs/react.mjs";
@@ -36,11 +36,11 @@ const checkSession = createServerFn({
   method: "GET"
 }).handler(checkSession_createServerFn_handler, async () => {
   const {
-    getWebRequest
-  } = await import("./server-CG6M_atp.mjs").then(function(n) {
+    getRequest
+  } = await import("./server-DkyGmCH3.mjs").then(function(n) {
     return n.b;
   });
-  const req = getWebRequest();
+  const req = getRequest();
   const loggedIn = req ? !!await getSession(req) : false;
   return {
     loggedIn

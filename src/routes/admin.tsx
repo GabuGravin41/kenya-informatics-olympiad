@@ -5,8 +5,8 @@ import AdminApp from "../components/admin/AdminApp";
 
 const checkSession = createServerFn({ method: "GET" })
   .handler(async () => {
-    const { getWebRequest } = await import("@tanstack/react-start/server");
-    const req = getWebRequest();
+    const { getRequest } = await import("@tanstack/react-start/server");
+    const req = getRequest();
     const loggedIn = req ? !!(await getSession(req)) : false;
     return { loggedIn };
   });
