@@ -21,6 +21,13 @@ export const Route = createFileRoute("/api/admin/me")({
 
         try {
           const user = await getGitHubUser(token);
+          const allowedUsersEnv = process.env.ALLOWED_GITHUB_USERS;
+          if (allowedUsersEnv) {
+            const allowedList = allowedUsersEnv.split(",").map((u) => u.trim().toLowerCase());
+            if (!allowedList.includes(user.login.toLowerCase())) {
+              return json({ error: "User not allowed on CMS" }, 403);
+            }
+          }
           return json({ login: user.login, name: user.name, avatar_url: user.avatar_url });
         } catch (err: unknown) {
           const message = err instanceof Error ? err.message : String(err);

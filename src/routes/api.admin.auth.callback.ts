@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { buildSetCookie } from "../lib/session";
+import { getGitHubUser } from "../lib/github-api";
 
 interface GitHubTokenResponse {
   access_token?: string;
@@ -73,6 +74,21 @@ export const Route = createFileRoute("/api/admin/auth/callback")({
 
         if (tokenData.error || !tokenData.access_token) {
           return errorPage(tokenData.error_description || tokenData.error || "Unknown error from GitHub.");
+        }
+
+        // Fetch user profile to check allowlist
+        try {
+          const user = await getGitHubUser(tokenData.access_token);
+          const allowedUsersEnv = process.env.ALLOWED_GITHUB_USERS;
+          if (allowedUsersEnv) {
+            const allowedList = allowedUsersEnv.split(",").map((u) => u.trim().toLowerCase());
+            if (!allowedList.includes(user.login.toLowerCase())) {
+              return errorPage(`User @${user.login} is not on the admin allowlist. Please ask the administrator to add you to the ALLOWED_GITHUB_USERS environment variable.`);
+            }
+          }
+        } catch (err: unknown) {
+          const message = err instanceof Error ? err.message : String(err);
+          return errorPage(`Failed to verify GitHub user profile: ${message}`);
         }
 
         // Store token in secure cookie and redirect to /admin
