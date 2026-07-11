@@ -321,11 +321,12 @@ During `npm run build`, Nitro generates a `.vercel/output/` directory containing
 
 In your Vercel project → Settings → Environment Variables, add:
 
-| Variable | Value |
-|---|---|
-| `GITHUB_CLIENT_ID` | Your OAuth App Client ID |
-| `GITHUB_CLIENT_SECRET` | Your OAuth App Client Secret |
-| `SESSION_SECRET` | A long random string (e.g. `openssl rand -hex 32`) |
+| Variable | Value | Description |
+|---|---|---|
+| `GITHUB_CLIENT_ID` | Your OAuth App Client ID | Required for OAuth |
+| `GITHUB_CLIENT_SECRET` | Your OAuth App Client Secret | Required for OAuth |
+| `SESSION_SECRET` | A long random string (e.g. `openssl rand -hex 32`) | Used to sign session cookies |
+| `ALLOWED_GITHUB_USERS` | `GabuGravin41,user1,user2` (Optional) | Comma-separated list of usernames to limit admin panel access |
 
 ### Step 3: Copy the Library Files
 
@@ -511,6 +512,7 @@ Do **not** add `"framework": "vite"` — Nitro's Build Output API (`vercel` pres
 | Tampered session cookie | HMAC-SHA256 signature — any bit flip fails verification |
 | CSRF during OAuth | State parameter stored in HttpOnly cookie; validated in callback |
 | Unauthorized content writes | Every API route checks the session cookie; GitHub also enforces that the OAuth token has `repo` scope on the target repository |
+| Unauthorized CMS access | Username checked against optional case-insensitive `ALLOWED_GITHUB_USERS` allowlist before issuing a session cookie |
 | Secret exposure | `SESSION_SECRET` and `GITHUB_CLIENT_SECRET` are environment variables, never in code or git |
 
 ---
