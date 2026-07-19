@@ -39,7 +39,7 @@
   "institutions": [
     { "name": "Kenya Mathematical Olympiad", "logo": "", "url": "", "note": "Programme partner" },
     { "name": "CEMASTEA", "logo": "", "url": "https://cemastea.ac.ke/", "note": "Training partner" },
-    { "name": "African Olympiad Academy", "logo": "", "url": "", "note": "Continental partner" },
+    { "name": "African Olympiad Academy", "logo": "", "url": "https://www.aoa.school/", "note": "Continental partner" },
     { "name": "Ministry of Education", "logo": "", "url": "", "note": "Government partner" }
   ]
 }
