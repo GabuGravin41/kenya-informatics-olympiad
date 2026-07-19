@@ -9,7 +9,6 @@ const NAV = [
   { to: "/news", label: "News" },
   { to: "/events", label: "Events" },
   { to: "/team", label: "Team" },
-  { to: "/support", label: "Support" },
 ] as const;
 
 export function SiteHeader() {
@@ -37,6 +36,12 @@ export function SiteHeader() {
         </div>
         <div className="flex items-center gap-2">
           <Link
+            to="/support"
+            className="hidden sm:inline-block border border-foreground/20 text-foreground px-5 py-2 text-[11px] uppercase tracking-widest font-bold hover:border-foreground hover:bg-foreground/5 transition-all active:scale-95"
+          >
+            Support
+          </Link>
+          <Link
             to="/register"
             className="hidden sm:inline-block bg-foreground text-background px-5 py-2 text-[11px] uppercase tracking-widest font-bold hover:bg-primary transition-all active:scale-95"
           >
@@ -58,6 +63,9 @@ export function SiteHeader() {
               {n.label}
             </Link>
           ))}
+          <Link to="/support" onClick={() => setOpen(false)} className="py-1 text-primary">
+            Support
+          </Link>
           <Link to="/register" onClick={() => setOpen(false)} className="py-1 text-primary">
             Register
           </Link>
