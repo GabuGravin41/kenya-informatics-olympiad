@@ -1,14 +1,13 @@
 import { useEditor } from "../useEditor";
-import { StringField, TextareaField, SectionHeader, Card, AddButton, ListControls, SaveBar } from "../FormFields";
+import { StringField, TextareaField, SectionHeader, Card, AddButton, ListControls, SaveBar, ImageUploadField } from "../FormFields";
 
 interface Stat { label: string; value: string }
-interface GalleryItem { image: string }
 interface PastEvent {
   slug: string; date: string; location: string; tag: string; title: string;
   summary: string; cover: string;
   report: string[];
   stats: Stat[];
-  gallery: GalleryItem[];
+  gallery: string[];
 }
 interface EventsData { events: PastEvent[] }
 
@@ -54,7 +53,7 @@ export function EventsEditor() {
             <StringField label="Title" value={ev.title} onChange={(v) => updEv(i, { ...ev, title: v })} />
           </div>
           <TextareaField label="Summary" value={ev.summary} rows={2} onChange={(v) => updEv(i, { ...ev, summary: v })} />
-          <StringField label="Cover image URL" value={ev.cover ?? ""} placeholder="/uploads/event-cover.jpg" onChange={(v) => updEv(i, { ...ev, cover: v })} />
+          <ImageUploadField label="Cover image" value={ev.cover ?? ""} onChange={(v) => updEv(i, { ...ev, cover: v })} />
 
           {/* Report paragraphs */}
           <div style={subSection}>
@@ -85,6 +84,28 @@ export function EventsEditor() {
             ))}
             <AddButton label="Add stat" onClick={() => updEv(i, { ...ev, stats: [...(ev.stats ?? []), { label: "", value: "" }] })} />
           </div>
+
+          {/* Gallery Photos */}
+          <div style={subSection}>
+            <div style={subLabel}>Gallery Photos</div>
+            <div style={galleryGrid}>
+              {(ev.gallery ?? []).map((img, gi) => (
+                <div key={gi} style={galleryItemCard}>
+                  <div style={galleryItemControls}>
+                    <button type="button" onClick={() => updEv(i, { ...ev, gallery: moveUp(ev.gallery, gi) })} disabled={gi === 0} style={miniCtrlBtn}>↑</button>
+                    <button type="button" onClick={() => updEv(i, { ...ev, gallery: moveDown(ev.gallery, gi) })} disabled={gi === ev.gallery.length - 1} style={miniCtrlBtn}>↓</button>
+                    <button type="button" onClick={() => updEv(i, { ...ev, gallery: removeAt(ev.gallery, gi) })} style={{ ...miniCtrlBtn, ...delBtnColor }}>✕</button>
+                  </div>
+                  <ImageUploadField
+                    label={`Photo ${gi + 1}`}
+                    value={img}
+                    onChange={(v) => updEv(i, { ...ev, gallery: updateAt(ev.gallery, gi, v) })}
+                  />
+                </div>
+              ))}
+            </div>
+            <AddButton label="Add photo to gallery" onClick={() => updEv(i, { ...ev, gallery: [...(ev.gallery ?? []), ""] })} />
+          </div>
         </Card>
       ))}
 
@@ -104,4 +125,34 @@ const errStyle: React.CSSProperties = { color: "#f87171", padding: 40, backgroun
 const delBtn: React.CSSProperties = {
   flexShrink: 0, background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)",
   borderRadius: 4, color: "#f87171", fontSize: 12, padding: "6px 10px", cursor: "pointer", marginBottom: 2,
+};
+const galleryGrid: React.CSSProperties = { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 8 };
+const galleryItemCard: React.CSSProperties = {
+  background: "#131d35",
+  border: "1px solid rgba(51,65,85,0.4)",
+  borderRadius: 8,
+  padding: "16px",
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
+  position: "relative" as const,
+};
+const galleryItemControls: React.CSSProperties = {
+  display: "flex",
+  gap: 4,
+  alignSelf: "flex-end",
+};
+const miniCtrlBtn: React.CSSProperties = {
+  background: "rgba(51,65,85,0.3)",
+  border: "1px solid rgba(51,65,85,0.5)",
+  borderRadius: 4,
+  color: "#94a3b8",
+  fontSize: 10,
+  padding: "2px 6px",
+  cursor: "pointer",
+};
+const delBtnColor: React.CSSProperties = {
+  color: "#f87171",
+  background: "rgba(239,68,68,0.08)",
+  borderColor: "rgba(239,68,68,0.2)",
 };

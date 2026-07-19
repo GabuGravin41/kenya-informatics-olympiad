@@ -24,6 +24,7 @@ import { Route as CompetitionRouteImport } from './routes/competition'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiAdminUploadRouteImport } from './routes/api.admin.upload'
 import { Route as ApiAdminMeRouteImport } from './routes/api.admin.me'
 import { Route as ApiAdminContentFileRouteImport } from './routes/api.admin.content.$file'
 import { Route as ApiAdminAuthLogoutRouteImport } from './routes/api.admin.auth.logout'
@@ -105,6 +106,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminUploadRoute = ApiAdminUploadRouteImport.update({
+  id: '/api/admin/upload',
+  path: '/api/admin/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminMeRoute = ApiAdminMeRouteImport.update({
   id: '/api/admin/me',
   path: '/api/admin/me',
@@ -148,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
   '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/upload': typeof ApiAdminUploadRoute
   '/api/admin/auth/callback': typeof ApiAdminAuthCallbackRoute
   '/api/admin/auth/login': typeof ApiAdminAuthLoginRoute
   '/api/admin/auth/logout': typeof ApiAdminAuthLogoutRoute
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
   '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/upload': typeof ApiAdminUploadRoute
   '/api/admin/auth/callback': typeof ApiAdminAuthCallbackRoute
   '/api/admin/auth/login': typeof ApiAdminAuthLoginRoute
   '/api/admin/auth/logout': typeof ApiAdminAuthLogoutRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/training': typeof TrainingRoute
   '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/upload': typeof ApiAdminUploadRoute
   '/api/admin/auth/callback': typeof ApiAdminAuthCallbackRoute
   '/api/admin/auth/login': typeof ApiAdminAuthLoginRoute
   '/api/admin/auth/logout': typeof ApiAdminAuthLogoutRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/training'
     | '/api/admin/me'
+    | '/api/admin/upload'
     | '/api/admin/auth/callback'
     | '/api/admin/auth/login'
     | '/api/admin/auth/logout'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/training'
     | '/api/admin/me'
+    | '/api/admin/upload'
     | '/api/admin/auth/callback'
     | '/api/admin/auth/login'
     | '/api/admin/auth/logout'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/training'
     | '/api/admin/me'
+    | '/api/admin/upload'
     | '/api/admin/auth/callback'
     | '/api/admin/auth/login'
     | '/api/admin/auth/logout'
@@ -284,6 +296,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TrainingRoute: typeof TrainingRoute
   ApiAdminMeRoute: typeof ApiAdminMeRoute
+  ApiAdminUploadRoute: typeof ApiAdminUploadRoute
   ApiAdminAuthCallbackRoute: typeof ApiAdminAuthCallbackRoute
   ApiAdminAuthLoginRoute: typeof ApiAdminAuthLoginRoute
   ApiAdminAuthLogoutRoute: typeof ApiAdminAuthLogoutRoute
@@ -397,6 +410,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/upload': {
+      id: '/api/admin/upload'
+      path: '/api/admin/upload'
+      fullPath: '/api/admin/upload'
+      preLoaderRoute: typeof ApiAdminUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/me': {
       id: '/api/admin/me'
       path: '/api/admin/me'
@@ -452,6 +472,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TrainingRoute: TrainingRoute,
   ApiAdminMeRoute: ApiAdminMeRoute,
+  ApiAdminUploadRoute: ApiAdminUploadRoute,
   ApiAdminAuthCallbackRoute: ApiAdminAuthCallbackRoute,
   ApiAdminAuthLoginRoute: ApiAdminAuthLoginRoute,
   ApiAdminAuthLogoutRoute: ApiAdminAuthLogoutRoute,

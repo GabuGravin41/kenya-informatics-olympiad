@@ -9,7 +9,7 @@ export const Route = createFileRoute("/team")({
       {
         name: "description",
         content:
-          "The leadership, coaches, and academic committee behind the Kenya Informatics Olympiad, working alongside the Kenya Mathematical Olympiad, Summer STEM, and African Olympiad Academy.",
+          "The leadership, coaches, and academic committee behind the Kenya Informatics Olympiad, working alongside the Kenya Mathematical Olympiad, CEMASTEA, and African Olympiad Academy.",
       },
       { property: "og:title", content: "Team — KIO" },
       {

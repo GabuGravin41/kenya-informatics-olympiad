@@ -41,6 +41,22 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
 
+  useEffect(() => {
+    const isChunkError =
+      error.message?.includes("Failed to fetch dynamically imported module") ||
+      error.message?.includes("Importing a deactivated provider") ||
+      error.message?.includes("dynamically imported module") ||
+      error.message?.includes("chunk");
+    if (isChunkError) {
+      const lastReload = sessionStorage.getItem("kio_last_preload_reload");
+      const now = Date.now();
+      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+        sessionStorage.setItem("kio_last_preload_reload", now.toString());
+        window.location.reload();
+      }
+    }
+  }, [error]);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6">
       <div className="max-w-md text-center">
@@ -124,6 +140,25 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const handlePreloadError = (event: Event) => {
+      event.preventDefault();
+      const lastReload = sessionStorage.getItem("kio_last_preload_reload");
+      const now = Date.now();
+      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+        sessionStorage.setItem("kio_last_preload_reload", now.toString());
+        window.location.reload();
+      } else {
+        console.error("Vite preload error detected, but skipped reload to prevent loop:", event);
+      }
+    };
+
+    window.addEventListener("vite:preloadError", handlePreloadError);
+    return () => {
+      window.removeEventListener("vite:preloadError", handlePreloadError);
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

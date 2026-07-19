@@ -126,7 +126,7 @@ function TrainingPage() {
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Shortlisted students are paired with coaches drawn from KIO alumni, university
-              competitive programmers, and partner programs at Summer STEM and the African Olympiad
+              competitive programmers, and partner programs at CEMASTEA and the African Olympiad
               Academy.
             </p>
           </div>

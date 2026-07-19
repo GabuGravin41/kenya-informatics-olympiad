@@ -2,7 +2,7 @@
  * Shared form field components used by all CMS editors.
  * Pure inline-styled React — no Tailwind, no external deps.
  */
-import { type ReactNode } from "react";
+import { type ReactNode, useState, useRef, type DragEvent, type ChangeEvent } from "react";
 
 // ─── Base Field Wrapper ───────────────────────────────────────────────────────
 
@@ -189,6 +189,148 @@ export function SaveBar({
   );
 }
 
+// ─── Drag-and-Drop Image Uploader ─────────────────────────────────────────────
+
+interface ImageUploadFieldProps {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  hint?: string;
+}
+
+export function ImageUploadField({ label, value, onChange, hint }: ImageUploadFieldProps) {
+  const [dragOver, setDragOver] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragOver(true);
+  };
+
+  const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragOver(false);
+  };
+
+  const handleDrop = async (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragOver(false);
+    setError(null);
+
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      await uploadFile(files[0]);
+    }
+  };
+
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    setError(null);
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      await uploadFile(files[0]);
+    }
+  };
+
+  const uploadFile = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      setError("Please drop/select an image file.");
+      return;
+    }
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({ error: `Upload failed (status: ${res.status})` }));
+        throw new Error(body.error || "Upload failed");
+      }
+
+      const data = await res.json() as { url: string };
+      onChange(data.url);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleClear = () => {
+    onChange("");
+    setError(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  return (
+    <Field label={label} hint={hint}>
+      <div style={s.uploadContainer}>
+        {/* Drop zone / Upload box */}
+        <div
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={() => fileInputRef.current?.click()}
+          style={{
+            ...s.dropZone,
+            ...(dragOver ? s.dropZoneActive : {}),
+            ...(uploading ? s.dropZoneUploading : {}),
+          }}
+        >
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept="image/*"
+            style={{ display: "none" }}
+          />
+
+          {uploading ? (
+            <div style={s.uploadStatus}>
+              <div style={s.miniSpinner} />
+              <span style={s.uploadStatusText}>Uploading to GitHub…</span>
+            </div>
+          ) : value ? (
+            <div style={s.previewArea}>
+              <div style={s.thumbnailContainer}>
+                <img src={value} alt="Preview" style={s.thumbnail} />
+              </div>
+              <div style={s.previewInfo}>
+                <span style={s.filenameText}>{value.split("/").pop()}</span>
+                <span style={s.clickToReplaceText}>Click or drag another image to replace</span>
+              </div>
+            </div>
+          ) : (
+            <div style={s.promptArea}>
+              <span style={s.uploadIcon}>📷</span>
+              <span style={s.promptText}>Drag & drop an image here, or click to browse</span>
+            </div>
+          )}
+        </div>
+
+        {/* Action / Error Area */}
+        {(value || error) && (
+          <div style={s.uploadMetaRow}>
+            {error && <span style={s.uploadErrorText}>✕ {error}</span>}
+            {value && !error && (
+              <button type="button" onClick={handleClear} style={s.clearBtn}>
+                Remove Image
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </Field>
+  );
+}
+
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const s: Record<string, React.CSSProperties> = {
@@ -319,4 +461,122 @@ const s: Record<string, React.CSSProperties> = {
   errorText: { fontSize: 13, color: "#f87171" },
   dirtyText: { fontSize: 13, color: "#fbbf24" },
   okText: { fontSize: 13, color: "#475569" },
+  uploadContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
+  },
+  dropZone: {
+    border: "2px dashed rgba(51,65,85,0.8)",
+    borderRadius: 8,
+    background: "#0f172a",
+    padding: "16px 20px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    transition: "border-color 0.2s, background 0.2s",
+    minHeight: 80,
+  },
+  dropZoneActive: {
+    borderColor: "#38bdf8",
+    background: "rgba(56,189,248,0.04)",
+  },
+  dropZoneUploading: {
+    borderColor: "rgba(56,189,248,0.4)",
+    cursor: "wait",
+  },
+  uploadStatus: {
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+  },
+  miniSpinner: {
+    width: 16,
+    height: 16,
+    border: "2px solid #1e293b",
+    borderTopColor: "#38bdf8",
+    borderRadius: "50%",
+    animation: "spin 0.7s linear infinite",
+  },
+  uploadStatusText: {
+    fontSize: 13,
+    color: "#94a3b8",
+  },
+  previewArea: {
+    display: "flex",
+    alignItems: "center",
+    gap: 16,
+    width: "100%",
+  },
+  thumbnailContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 6,
+    overflow: "hidden",
+    background: "#1e293b",
+    flexShrink: 0,
+    border: "1px solid rgba(255,255,255,0.05)",
+    backgroundImage: "linear-gradient(45deg, #182030 25%, transparent 25%), linear-gradient(-45deg, #182030 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #182030 75%), linear-gradient(-45deg, transparent 75%, #182030 75%)",
+    backgroundSize: "8px 8px",
+    backgroundPosition: "0 0, 0 4px, 4px -4px, -4px 0px"
+  },
+  thumbnail: {
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+  },
+  previewInfo: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+    minWidth: 0,
+    flex: 1,
+  },
+  filenameText: {
+    fontSize: 13,
+    fontWeight: 600,
+    color: "#e2e8f0",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+  },
+  clickToReplaceText: {
+    fontSize: 11,
+    color: "#475569",
+  },
+  promptArea: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+  },
+  uploadIcon: {
+    fontSize: 18,
+  },
+  promptText: {
+    fontSize: 13,
+    color: "#64748b",
+  },
+  uploadMetaRow: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
+    padding: "0 4px",
+  },
+  uploadErrorText: {
+    fontSize: 12,
+    color: "#f87171",
+  },
+  clearBtn: {
+    background: "none",
+    border: "none",
+    color: "#f87171",
+    fontSize: 12,
+    cursor: "pointer",
+    padding: 0,
+    fontWeight: 600,
+    textDecoration: "underline",
+    marginLeft: "auto",
+  },
 };

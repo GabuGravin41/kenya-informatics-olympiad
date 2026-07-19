@@ -20,25 +20,25 @@
     {
       "title": "Bank transfer",
       "body": "For larger gifts and institutional sponsors.",
-      "detail": "Account details available on request — email partners@kio.ke"
+      "detail": "Account details available on request — email ceo@cemastea.ac.ke"
     },
     {
       "title": "In-kind & sponsorship",
       "body": "Venues, devices, connectivity, prizes, or travel support.",
-      "detail": "Let's design a partnership — partners@kio.ke"
+      "detail": "Let's design a partnership — email ceo@cemastea.ac.ke or call +254 706 722697"
     }
   ],
   "contacts": [
     {
       "label": "Donations & sponsorship",
-      "value": "partners@kio.ke",
-      "href": "mailto:partners@kio.ke"
+      "value": "ceo@cemastea.ac.ke",
+      "href": "mailto:ceo@cemastea.ac.ke"
     },
     { "label": "General enquiries", "value": "hello@kio.ke", "href": "mailto:hello@kio.ke" }
   ],
   "institutions": [
     { "name": "Kenya Mathematical Olympiad", "logo": "", "url": "", "note": "Programme partner" },
-    { "name": "Summer STEM", "logo": "", "url": "", "note": "Training partner" },
+    { "name": "CEMASTEA", "logo": "", "url": "https://cemastea.ac.ke/", "note": "Training partner" },
     { "name": "African Olympiad Academy", "logo": "", "url": "", "note": "Continental partner" },
     { "name": "Ministry of Education", "logo": "", "url": "", "note": "Government partner" }
   ]

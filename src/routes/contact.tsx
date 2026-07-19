@@ -22,7 +22,7 @@ export const Route = createFileRoute("/contact")({
 const CHANNELS = [
   { k: "General enquiries", v: "hello@kio.ke" },
   { k: "Schools & registration", v: "schools@kio.ke" },
-  { k: "Sponsorship & partners", v: "partners@kio.ke" },
+  { k: "Sponsorship & partners", v: "ceo@cemastea.ac.ke" },
   { k: "Press", v: "press@kio.ke" },
 ];
 
@@ -63,7 +63,7 @@ function ContactPage() {
               </div>
               <p className="font-display text-xl text-foreground">Nairobi, Kenya</p>
               <p className="mt-2 text-sm">
-                Operating in partnership with the Kenya Mathematical Olympiad, Summer STEM, and the
+                Operating in partnership with the Kenya Mathematical Olympiad, CEMASTEA, and the
                 African Olympiad Academy.
               </p>
             </div>

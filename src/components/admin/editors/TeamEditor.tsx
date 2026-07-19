@@ -1,5 +1,5 @@
 import { useEditor } from "../useEditor";
-import { StringField, SectionHeader, Card, AddButton, ListControls, SaveBar } from "../FormFields";
+import { StringField, SectionHeader, Card, AddButton, ListControls, SaveBar, ImageUploadField } from "../FormFields";
 
 interface Member {
   name: string; role: string; org: string; initials: string; image: string;
@@ -45,11 +45,10 @@ export function TeamEditor() {
               onChange={(v) => upd(updateAt(data.members, i, { ...m, initials: v.slice(0, 3) }))}
               placeholder="e.g. KS"
             />
-            <StringField
-              label="Photo URL (leave empty to use initials)"
+            <ImageUploadField
+              label="Photo"
               value={m.image}
               onChange={(v) => upd(updateAt(data.members, i, { ...m, image: v }))}
-              placeholder="/uploads/photo.jpg"
             />
           </div>
         </Card>

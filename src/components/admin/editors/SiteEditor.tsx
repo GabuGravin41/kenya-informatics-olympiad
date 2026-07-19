@@ -1,7 +1,7 @@
 import { useEditor } from "../useEditor";
 import {
   StringField, TextareaField, BoolField,
-  SectionHeader, Card, AddButton, ListControls, SaveBar,
+  SectionHeader, Card, AddButton, ListControls, SaveBar, ImageUploadField,
 } from "../FormFields";
 
 interface SiteData {
@@ -169,14 +169,21 @@ export function SiteEditor() {
         </div>
         <TextareaField label="Lede" value={data.sponsors.lede} rows={2} onChange={(v) => set("sponsors", { ...data.sponsors, lede: v })} />
         {data.sponsors.items.map((sp, i) => (
-          <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-end" }}>
-            <div style={{ flex: 1 }}>
-              <StringField label="Name" value={sp.name} onChange={(v) => set("sponsors", { ...data.sponsors, items: updateAt(data.sponsors.items, i, { ...sp, name: v }) })} />
+          <div key={i} style={{ display: "flex", flexDirection: "column", gap: 10, padding: 12, border: "1px solid rgba(51,65,85,0.4)", borderRadius: 6, marginBottom: 12 }}>
+            <div style={{ display: "flex", gap: 8, alignItems: "flex-end" }}>
+              <div style={{ flex: 1 }}>
+                <StringField label="Name" value={sp.name} onChange={(v) => set("sponsors", { ...data.sponsors, items: updateAt(data.sponsors.items, i, { ...sp, name: v }) })} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <StringField label="Website URL" value={sp.url} onChange={(v) => set("sponsors", { ...data.sponsors, items: updateAt(data.sponsors.items, i, { ...sp, url: v }) })} />
+              </div>
+              <button onClick={() => set("sponsors", { ...data.sponsors, items: removeAt(data.sponsors.items, i) })} style={delBtn}>✕</button>
             </div>
-            <div style={{ flex: 1 }}>
-              <StringField label="Website URL" value={sp.url} onChange={(v) => set("sponsors", { ...data.sponsors, items: updateAt(data.sponsors.items, i, { ...sp, url: v }) })} />
-            </div>
-            <button onClick={() => set("sponsors", { ...data.sponsors, items: removeAt(data.sponsors.items, i) })} style={delBtn}>✕</button>
+            <ImageUploadField
+              label="Logo"
+              value={sp.logo}
+              onChange={(v) => set("sponsors", { ...data.sponsors, items: updateAt(data.sponsors.items, i, { ...sp, logo: v }) })}
+            />
           </div>
         ))}
         <AddButton label="Add sponsor" onClick={() => set("sponsors", { ...data.sponsors, items: [...data.sponsors.items, { name: "", logo: "", url: "" }] })} />

@@ -63,7 +63,7 @@ export function SiteFooter() {
         <div className="md:col-span-3 flex flex-col gap-3 text-[11px] uppercase tracking-widest font-medium">
           <span className="text-muted">Partners</span>
           <span>Kenya Mathematical Olympiad</span>
-          <span>Summer STEM</span>
+          <span>CEMASTEA</span>
           <span>African Olympiad Academy</span>
         </div>
       </div>

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Learn about the Kenya Informatics Olympiad (KIO): our mission, history, and partner ecosystem alongside the Kenya Mathematical Olympiad, Summer STEM, and African Olympiad Academy.",
+          "Learn about the Kenya Informatics Olympiad (KIO): our mission, history, and partner ecosystem alongside the Kenya Mathematical Olympiad, CEMASTEA, and African Olympiad Academy.",
       },
       { property: "og:title", content: "About — KIO" },
       {
@@ -46,7 +46,7 @@ function AboutPage() {
               to the international olympiad podium.
             </p>
             <p>
-              We work in close partnership with Summer STEM and the African Olympiad Academy to
+              We work in close partnership with the African Olympiad Academy and CEMASTEA to
               share coaches, training materials, and selection infrastructure. Together we form
               East Africa's most serious academic competition ecosystem.
             </p>
@@ -75,7 +75,7 @@ function AboutPage() {
                   Sister Programs
                 </div>
                 <div className="text-sm leading-relaxed">
-                  Kenya Mathematical Olympiad · Summer STEM · African Olympiad Academy
+                  Kenya Mathematical Olympiad · African Olympiad Academy · CEMASTEA
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { useEditor } from "../useEditor";
-import { StringField, TextareaField, SectionHeader, Card, AddButton, ListControls, SaveBar } from "../FormFields";
+import { StringField, TextareaField, SectionHeader, Card, AddButton, ListControls, SaveBar, ImageUploadField } from "../FormFields";
 
 interface Way { title: string; body: string; detail: string }
 interface Contact { label: string; value: string; href: string }
@@ -93,7 +93,7 @@ export function SupportEditor() {
             <StringField label="Note" value={inst.note ?? ""} placeholder="Government partner" onChange={(v) => set("institutions", updateAt(data.institutions, i, { ...inst, note: v }))} />
           </div>
           <div style={grid2}>
-            <StringField label="Logo URL" value={inst.logo ?? ""} placeholder="/uploads/logo.png" onChange={(v) => set("institutions", updateAt(data.institutions, i, { ...inst, logo: v }))} />
+            <ImageUploadField label="Logo" value={inst.logo ?? ""} onChange={(v) => set("institutions", updateAt(data.institutions, i, { ...inst, logo: v }))} />
             <StringField label="Website URL" value={inst.url ?? ""} placeholder="https://example.com" onChange={(v) => set("institutions", updateAt(data.institutions, i, { ...inst, url: v }))} />
           </div>
         </Card>
