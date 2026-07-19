@@ -1,10 +1,32 @@
 {
   "members": [
-    { "name": "TBD", "role": "Director", "org": "KIO Steering Committee", "initials": "KS", "image": "" },
-    { "name": "TBD", "role": "Academic Lead", "org": "Olympiad Problem-Setting Committee", "initials": "PS", "image": "" },
-    { "name": "TBD", "role": "Head Coach", "org": "Selection & Training Camp", "initials": "HC", "image": "" },
-    { "name": "TBD", "role": "Operations", "org": "Logistics, venues, scholarships", "initials": "OP", "image": "" },
-    { "name": "TBD", "role": "Partner Liaison", "org": "KMO · Summer STEM · AOA", "initials": "PL", "image": "" },
-    { "name": "TBD", "role": "Schools Outreach", "org": "Regional coordinators across Kenya", "initials": "SO", "image": "" }
+    {
+      "name": "Dr. James Katende",
+      "role": "Director",
+      "org": "University of Nairobi",
+      "initials": "JK",
+      "image": ""
+    },
+    {
+      "name": "Dalton Omondi",
+      "role": "Head Coach",
+      "org": "Kenyatta University",
+      "initials": "DO",
+      "image": ""
+    },
+    {
+      "name": "Martin Mungai",
+      "role": "Director",
+      "org": "CEMASTEA",
+      "initials": "MM",
+      "image": ""
+    },
+    {
+      "name": "Angelo Opiyo",
+      "role": "Coach",
+      "org": "JKUAT",
+      "initials": "AO",
+      "image": ""
+    }
   ]
 }
