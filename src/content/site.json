@@ -11,28 +11,28 @@
   "paioCard": {
     "eyebrow": "Upcoming Event // 07.2026",
     "title": "Pan-African Informatics Olympiad",
-    "body": "KIO will represent the nation at PAIO 2026 this July. Intense training camps for shortlisted candidates begin in May.",
-    "cta": "View Event Roadmap →"
+    "body": "KIO will represent the nation at PAIO 2026 this July in Rwanda. ",
+    "cta": "View Event >"
   },
   "announcements": {
     "eyebrow": "Announcements",
     "heading": "Latest updates",
     "items": [
       {
-        "date": "01 Feb 2026",
+        "date": "01 Aug 2026",
         "tag": "Registration",
-        "title": "Cycle 2026 registration is open",
+        "title": "Cycle 2027 registration is open",
         "body": "The Open Round qualifier runs online in March 2026 and is free for every Kenyan secondary school student.",
         "link": "/register",
-        "linkLabel": "Register now →"
+        "linkLabel": "Register now >"
       },
       {
-        "date": "15 Jan 2026",
+        "date": "15 Jan 2027",
         "tag": "Camp",
         "title": "Team Selection Camp dates confirmed",
-        "body": "The 10-day selection camp for the top ~30 contestants will run 15–25 June 2026 in Nairobi.",
+        "body": "The 10-day team selection camp for the top 30 contestants will run 15–25 June 2027 in Nairobi.",
         "link": "/news",
-        "linkLabel": "See the calendar →"
+        "linkLabel": "See the calendar >"
       }
     ]
   },
@@ -40,7 +40,7 @@
     "eyebrow": "The Mission",
     "heading": "Building Kenya's algorithmic talent — one solved problem at a time.",
     "paragraphs": [
-      "KIO is the national selection and training pipeline for competitive informatics in Kenya. We work alongside the Kenya Mathematical Olympiad, Summer STEM, and the African Olympiad Academy to give exceptional students a path from secondary school to the global olympiad stage.",
+      "KIO is the national selection and training pipeline for competitive informatics in Kenya. We work alongside the Kenya Mathematical Olympiad, and the African Olympiad Academy to give exceptional students a path from secondary school to the global olympiad stage.",
       "Our 2026 cohort is preparing for the Pan-African Informatics Olympiad in July — and the road to IOI beyond."
     ]
   },
