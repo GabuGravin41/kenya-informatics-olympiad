@@ -50,6 +50,11 @@
           "title": "KIO training track",
           "url": "/training",
           "description": "How KIO trains and mentors shortlisted students."
+        },
+        {
+          "title": "Proctor AI Testing Portal",
+          "url": "https://edureach.site",
+          "description": "Take practice exams, mock KMO and KIO rounds, and view your proctoring logs online."
         }
       ]
     }
